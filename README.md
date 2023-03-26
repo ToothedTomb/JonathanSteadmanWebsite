@@ -1,3 +1,4 @@
-# JonathanLinux
+Jonathan Steadman web page.
 
-Free and open source website. :)
+
+

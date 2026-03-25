@@ -1,43 +1,170 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Jonathan Steadman</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>𝕵𝖔𝖓𝖆𝖙𝖍𝖆𝖓 𝕾𝖙𝖊𝖆𝖉𝖒𝖆𝖓</title>
   
   <link rel="stylesheet" href="bulma.css">
-    <link rel="icon" type="image/png" href="Assets/icon.png"> 
+  <link rel="icon" type="image/png" href="Assets/icon.png"> 
+  <h1 style="text-align: center;">𝕵𝖔𝖓𝖆𝖙𝖍𝖆𝖓 𝕾𝖙𝖊𝖆𝖉𝖒𝖆𝖓</h1>
+  <hr>
+  <style>
+    /* Fix navbar centering */
+    .navbar-menu {
+      justify-content: center;
+    }
+    .navbar-start {
+      justify-content: center;
+      flex-grow: 1;
+    }
+    .navbar-end {
+      display: none;
+    }
+    
+    /* Active menu item styling */
+    .navbar-item.active {
+      background-color: #77676791;
+      color: #000000;
+      border-radius: 4px;
+    }
+    
+    /* Ensure burger button is visible on mobile */
+    .navbar-burger {
+      display: none;
+    }
+    
+    @media screen and (max-width: 1023px) {
+      .navbar-burger {
+        display: block;
+      }
+      .navbar-menu {
+        display: none;
+      }
+      .navbar-menu.is-active {
+        display: block;
+      }
+      .navbar-start {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem;
+      }
+      .navbar-item {
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+      }
+      .navbar-item.active {
+        width: auto;
+        min-width: 200px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
 
-
-
+  <div id="navbarBasic" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" id="homeLink" href="index.html">
+        Home
+      </a>
+      <a class="navbar-item" id="systemInfoLink" href="MySystemInfo.html">
+        My System Information
+      </a>
+    </div>
+  </div>
+</nav>
 
 <u>
-<h1 style="text-align: center;">Who am I?</h1> <br>
+  <br><br>
+  <h1 style="text-align: center;">Who am I?</h1> <br>
 </u>
-<p style="text-align: center;">My name is Jonathan Steadman, and I am not merely a user of Linux and open-source software—I am a passionate advocate, a developer, and a firm believer in the philosophy of freedom, transparency, and community that underpins the entire open-source movement. My journey into the world of free operating systems began when I was just 16 years old, a curious teenager with a modest laptop and a desire to truly understand the technology I was using every day. At that time, like so many others, I was reliant on mainstream proprietary operating systems—tools that worked but felt opaque, restrictive, and disconnected from the user. I wanted more than just a product; I wanted a platform I could explore, modify, and truly own. That desire led me to install my first Linux distribution, and it was a decision that would shape not only the way I interact with computers but also my personal identity, my career ambitions, and my vision for the future of technology.</p><br><p style="text-align: center;">Now, at 23 years old, I have spent seven formative years immersed in the Linux ecosystem—seven years of learning, building, failing, troubleshooting, and ultimately thriving in an environment that rewards curiosity and punishes complacency. Over this time, my appreciation for Linux has only deepened. What began as an experiment quickly grew into a daily reality, and today, I run Linux Mint as my primary and only operating system. I chose Linux Mint not just for its elegance and user-friendliness, but for its stability and its commitment to preserving the classic desktop experience while incorporating the latest innovations from the open-source world. Whether I'm writing code, producing content, gaming, or simply browsing the web, Linux Mint provides a seamless, secure, and highly customizable foundation that empowers me to work efficiently and creatively without ever feeling constrained by the software I'm using. Every time I boot up my machine, I'm reminded of the freedom that comes with open-source software—the freedom to inspect every line of code, to change behavior I don't like, and to share my improvements with others.</p><br><p style="text-align: center;">Throughout this incredible seven-year journey, I have not been content to simply use Linux—I have actively contributed to its growth and richness by developing software and games tailored specifically for Linux environments. One of my earliest and most personally meaningful projects was called NemoS, a text-based text editor designed to run directly in the terminal. Inspired by classic editors like Nano and Vim, NemoS was my attempt to create something functional, lightweight, and accessible to users who prefer the simplicity and speed of command-line interfaces. Building NemoS was a labor of love—it taught me invaluable lessons about software design, user experience, memory management, and the importance of listening to user feedback. It also deepened my appreciation for the tools that developers often take for granted. Every time I use Nano or Vim today, I think about the countless hours of work that went into those editors, and I feel proud to have contributed something, however modest, to that tradition of terminal-based software.</p><br><p style="text-align: center;">But my contributions to the open-source community extend far beyond writing code. I have also dedicated significant time to creating educational and inspirational content focused on alternative operating systems. Through my videos and writings, I explore the vast and diverse landscape of platforms that exist beyond the mainstream—Linux distributions of all flavors, the robust and security-focused FreeBSD, the nostalgic and forward-looking Haiku OS inspired by BeOS, and many others. My goal with this content is simple: to demystify alternative operating systems and to show people that they have choices. I want to help others discover the same sense of empowerment and control that I found when I first made the switch. Whether it's a tutorial on setting up a development environment in FreeBSD, a review of the latest features in a new Linux distribution, or a deep dive into the architecture of Haiku OS, I strive to make my content engaging, informative, and accessible to both beginners and seasoned enthusiasts alike.</p>
-<br><p style="text-align: center;">Looking toward the future, my commitment to the Linux ecosystem and the broader open-source community has never been stronger. I am determined to expand my contributions in meaningful and impactful ways. On the software development front, I am actively working on new projects that address real-world needs—tools that enhance productivity, improve accessibility, or simply bring a smile to users' faces through well-crafted gameplay or clever design. I am also committed to contributing code to existing open-source projects, whether that means fixing bugs, adding features, improving documentation, or helping to mentor new contributors who are just starting their own journeys. I believe that open-source software thrives when we support one another, share knowledge freely, and welcome newcomers with patience and encouragement.</p>
-<br><p style="text-align: center;">Beyond code and content, I see myself as an ambassador for the open-source way of thinking—a philosophy that values collaboration over competition, transparency over secrecy, and community over individualism. In a world increasingly dominated by proprietary platforms that treat users as products rather than partners, the principles of open-source software have never been more relevant or more urgent. I want to help spread those principles not just through the software I write or the videos I create, but through everyday conversations, mentorship, and advocacy. I want to show people that technology can be different—that it can be beautiful, empowering, and truly owned by those who use it.</p>
-<br><p style="text-align: center;">So, whether I'm refining a piece of code, filming a new video, answering questions in a forum, or simply helping a friend install Linux on their old laptop, I am always working toward the same vision: a world where software is free, knowledge is shared, and users are in control. My name is Jonathan Steadman, and I am proud to be part of this movement. The past seven years have been an incredible adventure, but I truly believe the best is yet to come. With each passing day, I grow more excited about the possibilities ahead—the problems we will solve together, the innovations we will unleash, and the communities we will build. I invite you to join me on this journey, whether as a fellow developer, a curious learner, or simply someone who believes that technology should serve everyone, not just the few. Together, we can make the open-source dream a reality for generations to come.</p>
-<br>
+<p style="text-align: center;">My name is Jonathan Steadman, and I am not merely a user of Linux and open-source software—I am a passionate advocate, a developer, and a firm believer in the philosophy of freedom, transparency, and community that underpins the entire open-source movement. My journey into the world of free operating systems began when I was just 16 years old, a curious teenager with a modest laptop and a desire to truly understand the technology I was using every day. At that time, like so many others, I was reliant on mainstream proprietary operating systems—tools that worked but felt opaque, restrictive, and disconnected from the user. I wanted more than just a product; I wanted a platform I could explore, modify, and truly own. That desire led me to install my first Linux distribution, and it was a decision that would shape not only the way I interact with computers but also my personal identity, my career ambitions, and my vision for the future of technology.</p><br>
+<p style="text-align: center;">Now, at 23 years old, I have spent seven formative years immersed in the Linux ecosystem—seven years of learning, building, failing, troubleshooting, and ultimately thriving in an environment that rewards curiosity and punishes complacency. Over this time, my appreciation for Linux has only deepened. What began as an experiment quickly grew into a daily reality, and today, I run Linux Mint as my primary and only operating system. I chose Linux Mint not just for its elegance and user-friendliness, but for its stability and its commitment to preserving the classic desktop experience while incorporating the latest innovations from the open-source world. Whether I'm writing code, producing content, gaming, or simply browsing the web, Linux Mint provides a seamless, secure, and highly customizable foundation that empowers me to work efficiently and creatively without ever feeling constrained by the software I'm using. Every time I boot up my machine, I'm reminded of the freedom that comes with open-source software—the freedom to inspect every line of code, to change behavior I don't like, and to share my improvements with others.</p><br>
+<p style="text-align: center;">Throughout this incredible seven-year journey, I have not been content to simply use Linux—I have actively contributed to its growth and richness by developing software and games tailored specifically for Linux environments. One of my earliest and most personally meaningful projects was called NemoS, a text-based text editor designed to run directly in the terminal. Inspired by classic editors like Nano and Vim, NemoS was my attempt to create something functional, lightweight, and accessible to users who prefer the simplicity and speed of command-line interfaces. Building NemoS was a labor of love—it taught me invaluable lessons about software design, user experience, memory management, and the importance of listening to user feedback. It also deepened my appreciation for the tools that developers often take for granted. Every time I use Nano or Vim today, I think about the countless hours of work that went into those editors, and I feel proud to have contributed something, however modest, to that tradition of terminal-based software.</p><br>
+<p style="text-align: center;">But my contributions to the open-source community extend far beyond writing code. I have also dedicated significant time to creating educational and inspirational content focused on alternative operating systems. Through my videos and writings, I explore the vast and diverse landscape of platforms that exist beyond the mainstream—Linux distributions of all flavors, the robust and security-focused FreeBSD, the nostalgic and forward-looking Haiku OS inspired by BeOS, and many others. My goal with this content is simple: to demystify alternative operating systems and to show people that they have choices. I want to help others discover the same sense of empowerment and control that I found when I first made the switch. Whether it's a tutorial on setting up a development environment in FreeBSD, a review of the latest features in a new Linux distribution, or a deep dive into the architecture of Haiku OS, I strive to make my content engaging, informative, and accessible to both beginners and seasoned enthusiasts alike.</p><br>
+<p style="text-align: center;">Looking toward the future, my commitment to the Linux ecosystem and the broader open-source community has never been stronger. I am determined to expand my contributions in meaningful and impactful ways. On the software development front, I am actively working on new projects that address real-world needs—tools that enhance productivity, improve accessibility, or simply bring a smile to users' faces through well-crafted gameplay or clever design. I am also committed to contributing code to existing open-source projects, whether that means fixing bugs, adding features, improving documentation, or helping to mentor new contributors who are just starting their own journeys. I believe that open-source software thrives when we support one another, share knowledge freely, and welcome newcomers with patience and encouragement.</p><br>
+<p style="text-align: center;">Beyond code and content, I see myself as an ambassador for the open-source way of thinking—a philosophy that values collaboration over competition, transparency over secrecy, and community over individualism. In a world increasingly dominated by proprietary platforms that treat users as products rather than partners, the principles of open-source software have never been more relevant or more urgent. I want to help spread those principles not just through the software I write or the videos I create, but through everyday conversations, mentorship, and advocacy. I want to show people that technology can be different—that it can be beautiful, empowering, and truly owned by those who use it.</p><br>
+<p style="text-align: center;">So, whether I'm refining a piece of code, filming a new video, answering questions in a forum, or simply helping a friend install Linux on their old laptop, I am always working toward the same vision: a world where software is free, knowledge is shared, and users are in control. My name is Jonathan Steadman, and I am proud to be part of this movement. The past seven years have been an incredible adventure, but I truly believe the best is yet to come. With each passing day, I grow more excited about the possibilities ahead—the problems we will solve together, the innovations we will unleash, and the communities we will build. I invite you to join me on this journey, whether as a fellow developer, a curious learner, or simply someone who believes that technology should serve everyone, not just the few. Together, we can make the open-source dream a reality for generations to come.</p><br>
 
-<p style="text-align: center;"> <a href="https://jonathan-linux.itch.io/" target="_blank" class="button">Check out my projects</a> <a href="https://www.youtube.com/@JonathanSteadman2003" target="_blank" class="button">Check out my Youtube Channel</a> </p>
+<p style="text-align: center;"> 
+  <a href="https://jonathan-linux.itch.io/" target="_blank" class="button">Check out my projects</a> 
+  <a href="https://www.youtube.com/@JonathanSteadman2003" target="_blank" class="button">Check out my Youtube Channel</a> 
+</p>
 <br>
-  <u>
-    <h2 style="text-align: center;">Watch one of my videos:</h2>
-  </u>
-  <br>
+<u>
+  <h2 style="text-align: center;">Watch one of my videos:</h2>
+</u>
+<br>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
-    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-            src="https://www.youtube-nocookie.com/embed/IFP6yDm2F5U?si=-VaGFxvYss3hvInm" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen>
-    </iframe>
+  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+          src="https://www.youtube-nocookie.com/embed/IFP6yDm2F5U?si=-VaGFxvYss3hvInm" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen>
+  </iframe>
 </div>
-    </body>
 
+<script>
+  // Mobile burger menu functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.querySelector('.navbar-burger');
+    const menu = document.querySelector('#navbarBasic');
+    
+    if (burger && menu) {
+      burger.addEventListener('click', () => {
+        burger.classList.toggle('is-active');
+        menu.classList.toggle('is-active');
+      });
+    }
+    
+    // Active menu item functionality
+    const navItems = document.querySelectorAll('.navbar-item');
+    
+    function setActiveItem(clickedItem) {
+      // Remove active class from all items
+      navItems.forEach(item => {
+        item.classList.remove('active');
+      });
+      // Add active class to clicked item
+      clickedItem.classList.add('active');
+      
+      // Close mobile menu after clicking (optional)
+      if (window.innerWidth <= 1023) {
+        burger.classList.remove('is-active');
+        menu.classList.remove('is-active');
+      }
+    }
+    
+    // Add click event to each nav item
+    navItems.forEach(item => {
+      item.addEventListener('click', function(e) {
+        setActiveItem(this);
+      });
+    });
+    
+    // *** FIX: Check current page and set active class ***
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    
+    if (currentPage === 'index.html') {
+      document.getElementById('homeLink').classList.add('active');
+    } else if (currentPage === 'MySystemInfo.html') {
+      document.getElementById('systemInfoLink').classList.add('active');
+    }
+  });
+</script>
 
+</body>
 </html>

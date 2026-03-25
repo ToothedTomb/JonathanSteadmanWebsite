@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>𝕵𝖔𝖓𝖆𝖙𝖍𝖆𝖓 𝕾𝖙𝖊𝖆𝖉𝖒𝖆𝖓</title>
+  
+  <link rel="stylesheet" href="bulma.css">
+  <link rel="icon" type="image/png" href="Assets/icon.png"> 
+  <h1 style="text-align: center;">𝕵𝖔𝖓𝖆𝖙𝖍𝖆𝖓 𝕾𝖙𝖊𝖆𝖉𝖒𝖆𝖓</h1>
+  <hr>
+  <style>
+    /* Fix navbar centering */
+    .navbar-menu {
+      justify-content: center;
+    }
+    .navbar-start {
+      justify-content: center;
+      flex-grow: 1;
+    }
+    .navbar-end {
+      display: none;
+    }
+    
+    /* Active menu item styling */
+    .navbar-item.active {
+      background-color: #77676791;
+      color: #000000;
+      border-radius: 4px;
+    }
+    
+    /* Ensure burger button is visible on mobile */
+    .navbar-burger {
+      display: none;
+    }
+    
+    @media screen and (max-width: 1023px) {
+      .navbar-burger {
+        display: block;
+      }
+      .navbar-menu {
+        display: none;
+      }
+      .navbar-menu.is-active {
+        display: block;
+      }
+      .navbar-start {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem;
+      }
+      .navbar-item {
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+      }
+      .navbar-item.active {
+        width: auto;
+        min-width: 200px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasic" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" id="homeLink" href="index.html">
+        Home
+      </a>
+      <a class="navbar-item" id="systemInfoLink" href="MySystemInfo.html">
+        My System Information
+      </a>
+    </div>
+  </div>
+</nav>
+
+<u>
+  <br><br>
+  <h1 style="text-align: center;">My System Information - 25/03/26:</h1> <br>
+</u>
+<div style="display: flex; justify-content: center;">
+ <pre>
+System:
+  Kernel: 6.17.0-19-generic arch: x86_64 bits: 64 compiler: gcc v: 13.3.0 clocksource: tsc
+  Desktop: Cinnamon v: 6.6.7 tk: GTK v: 3.24.41 wm: Muffin v: 6.6.3 vt: 7 dm: LightDM v: 1.30.0
+  Distro: Linux Mint 22.3 Zena base: Ubuntu 24.04 noble
+
+Machine:
+  Type: Desktop Mobo: INTEL model: B75 serial: &lt;superuser required&gt; uuid: &lt;superuser required&gt;
+  UEFI: American Megatrends v: 4.6.5 date: 08/17/2022
+
+CPU:
+  Info: dual core model: Intel Core i3-3240 bits: 64 type: MT MCP smt: enabled arch: Ivy Bridge
+  rev: 9 cache: L1: 128 KiB L2: 512 KiB L3: 3 MiB
+  Speed (MHz): avg: 3392 min/max: 1600/3400 cores: 1: 3392 2: 3392 3: 3392 4: 3392
+  bogomips: 27137
+  Flags: avx ht lm nx pae sse sse2 sse3 sse4_1 sse4_2 ssse3 vmx
+
+Graphics:
+  Device-1: NVIDIA GM107 [GeForce GTX 750] driver: nvidia v: 535.288.01 arch: Maxwell pcie:
+  speed: 5 GT/s lanes: 8 ports: active: none off: HDMI-A-1 empty: DVI-D-1,VGA-1 bus-ID: 01:00.0
+  chip-ID: 10de:1381 class-ID: 0300
+  Display: x11 server: X.Org v: 21.1.11 with: Xwayland v: 23.2.6 driver: X: loaded: nvidia
+  unloaded: fbdev,modesetting,nouveau,vesa gpu: nvidia,nvidia-nvswitch display-ID: :0 screens: 1
+  Screen-1: 0 s-res: 1920x1080 s-dpi: 93 s-size: 524x312mm (20.63x12.28") s-diag: 610mm (24.01")
+  Monitor-1: HDMI-0 res: 1920x1080 hz: 60 dpi: 93 size: 527x296mm (20.75x11.65")
+  diag: 604mm (23.8") modes: N/A
+  API: OpenGL v: 4.6.0 vendor: nvidia v: 535.288.01 glx-v: 1.4 direct-render: yes renderer: NVIDIA
+  GeForce GTX 750/PCIe/SSE2
+
+Audio:
+  Device-1: Intel 7 Series/C216 Family High Definition Audio driver: snd_hda_intel v: kernel
+  bus-ID: 00:1b.0 chip-ID: 8086:1e20 class-ID: 0403
+  Device-2: NVIDIA GM107 High Definition Audio [GeForce 940MX] driver: snd_hda_intel v: kernel
+  pcie: speed: 5 GT/s lanes: 8 bus-ID: 01:00.1 chip-ID: 10de:0fbc class-ID: 0403
+  API: ALSA v: k6.17.0-19-generic status: kernel-api
+  Server-1: PipeWire v: 1.0.5 status: active
+
+Network:
+  Device-1: Realtek RTL8111/8168/8211/8411 PCI Express Gigabit Ethernet driver: r8169 v: kernel
+  pcie: speed: 2.5 GT/s lanes: 1 port: d000 bus-ID: 03:00.0 chip-ID: 10ec:8168 class-ID: 0200
+  IF: enp3s0 state: up speed: 100 Mbps duplex: full mac: &lt;filter&gt;
+  Device-2: TP-Link Archer T2U PLUS [RTL8821AU] driver: rtw88_8821au type: USB rev: 2.1
+  speed: 480 Mb/s lanes: 1 bus-ID: 2-1.6:3 chip-ID: 2357:0120 class-ID: 0000
+  IF: wlx0cef156c2d08 state: up mac: &lt;filter&gt;
+
+Drives:
+  Local Storage: total: 1.86 TiB used: 604.29 GiB (31.7%)
+  ID-1: /dev/sda vendor: Fanxiang model: S101 1TB MX size: 953.87 GiB speed: 6.0 Gb/s tech: SSD
+  scheme: GPT
+  ID-2: /dev/sdb vendor: Addlink model: SATA SSD size: 953.87 GiB type: USB tech: SSD
+
+Partition:
+  ID-1: / size: 937.33 GiB used: 572.85 GiB (61.1%) fs: ext4 dev: /dev/sda2
+  ID-2: /boot/efi size: 511 MiB used: 6.1 MiB (1.2%) fs: vfat dev: /dev/sda1
+
+Swap:
+  ID-1: swap-1 type: file size: 2 GiB used: 8 KiB (0.0%) priority: -2 file: /swapfile
+
+Sensors:
+  System Temperatures: cpu: 41.0°C mobo: N/A gpu: nvidia temp: 29°C
+  Fan Speeds: gpu: nvidia fan: 40%
+
+Info:
+  Memory: total: 8 GiB available: 7.71 GiB used: 4.15 GiB (53.8%)
+  Processes: 280 Uptime: 4h 30m
+  Packages: dpkg: 2793
+  Init: systemd v: 255 target: graphical (5)
+  Compilers: gcc: 13.3.0
+  </pre>
+</div>
+  <h1 style="text-align: center;">Fastfetch:</h1> <br>
+
+<div style="display: flex; justify-content: center;">
+  <pre>Welcome to fish, the friendly interactive shell
+Type <font color="#4E9A06">help</font> for instructions on how to use fish
+<font color="#8AE234">jonathansteadman</font>@jonathansteadman-desktop <font color="#4E9A06">~</font>&gt; <font color="#3465A4">fastfetch</font>
+<font color="#8AE234"><b>             </b></font><font color="#EEEEEC"><b>...-:::::-...</b></font>                  <font color="#8AE234"><b>jonathansteadman</b></font>@<font color="#8AE234"><b>jonathansteadman-desktop</b></font>
+<font color="#EEEEEC"><b>          .-MMMMMMMMMMMMMMM-.</b></font>               -----------------------------------------
+<font color="#EEEEEC"><b>      .-MMMM</b></font><font color="#8AE234"><b>`..-:::::::-..`</b></font><font color="#EEEEEC"><b>MMMM-.</b></font>           <font color="#8AE234"><b>OS</b></font>: Linux Mint 22.3 x86_64
+<font color="#EEEEEC"><b>    .:MMMM</b></font><font color="#8AE234"><b>.:MMMMMMMMMMMMMMM:.</b></font><font color="#EEEEEC"><b>MMMM:.</b></font>         <font color="#8AE234"><b>Kernel</b></font>: Linux 6.17.0-19-generic
+<font color="#EEEEEC"><b>   -MMM</b></font><font color="#8AE234"><b>-M---MMMMMMMMMMMMMMMMMMM.</b></font><font color="#EEEEEC"><b>MMM-</b></font>        <font color="#8AE234"><b>Uptime</b></font>: 4 hours, 51 mins
+<font color="#EEEEEC"><b> `:MMM</b></font><font color="#8AE234"><b>:MM`  :MMMM:....::-...-MMMM:</b></font><font color="#EEEEEC"><b>MMM:`</b></font>     <font color="#8AE234"><b>Packages</b></font>: 2792 (dpkg)
+<font color="#EEEEEC"><b> :MMM</b></font><font color="#8AE234"><b>:MMM`  :MM:`  ``    ``  `:MMM:</b></font><font color="#EEEEEC"><b>MMM:</b></font>     <font color="#8AE234"><b>Shell</b></font>: fish 3.7.0
+<font color="#EEEEEC"><b>.MMM</b></font><font color="#8AE234"><b>.MMMM`  :MM.  -MM.  .MM-  `MMMM.</b></font><font color="#EEEEEC"><b>MMM.</b></font>    <font color="#8AE234"><b>Display (H238)</b></font>: 1920x1080 in 24&quot;, 60 Hz [External]
+<font color="#EEEEEC"><b>:MMM</b></font><font color="#8AE234"><b>:MMMM`  :MM.  -MM-  .MM:  `MMMM-</b></font><font color="#EEEEEC"><b>MMM:</b></font>    <font color="#8AE234"><b>DE</b></font>: Cinnamon 6.6.7
+<font color="#EEEEEC"><b>:MMM</b></font><font color="#8AE234"><b>:MMMM`  :MM.  -MM-  .MM:  `MMMM:</b></font><font color="#EEEEEC"><b>MMM:</b></font>    <font color="#8AE234"><b>WM</b></font>: Muffin (X11)
+<font color="#EEEEEC"><b>:MMM</b></font><font color="#8AE234"><b>:MMMM`  :MM.  -MM-  .MM:  `MMMM-</b></font><font color="#EEEEEC"><b>MMM:</b></font>    <font color="#8AE234"><b>WM Theme</b></font>: Mint-Y-Dark-Pink (Mint-Y)
+<font color="#EEEEEC"><b>.MMM</b></font><font color="#8AE234"><b>.MMMM`  :MM:--:MM:--:MM:  `MMMM.</b></font><font color="#EEEEEC"><b>MMM.</b></font>    <font color="#8AE234"><b>Theme</b></font>: Mint-Y-Dark-Pink [GTK2/3/4]
+<font color="#EEEEEC"><b> :MMM</b></font><font color="#8AE234"><b>:MMM-  `-MMMMMMMMMMMM-`  -MMM-</b></font><font color="#EEEEEC"><b>MMM:</b></font>     <font color="#8AE234"><b>Icons</b></font>: Mint-Y-Pink [GTK2/3/4]
+<font color="#EEEEEC"><b>  :MMM</b></font><font color="#8AE234"><b>:MMM:`                `:MMM:</b></font><font color="#EEEEEC"><b>MMM:</b></font>      <font color="#8AE234"><b>Font</b></font>: Ubuntu (10pt) [GTK2/3/4]
+<font color="#EEEEEC"><b>   .MMM</b></font><font color="#8AE234"><b>.MMMM:--------------:MMMM.</b></font><font color="#EEEEEC"><b>MMM.</b></font>       <font color="#8AE234"><b>Cursor</b></font>: breeze (24px)
+<font color="#EEEEEC"><b>     &apos;-MMMM</b></font><font color="#8AE234"><b>.-MMMMMMMMMMMMMMM-.</b></font><font color="#EEEEEC"><b>MMMM-&apos;</b></font>        <font color="#8AE234"><b>Terminal</b></font>: GNOME Terminal 3.52.0
+<font color="#EEEEEC"><b>       &apos;.-MMMM</b></font><font color="#8AE234"><b>``--:::::--``</b></font><font color="#EEEEEC"><b>MMMM-.&apos;</b></font>          <font color="#8AE234"><b>Terminal Font</b></font>: DejaVu Sans Mono (10pt)
+<font color="#EEEEEC"><b>            &apos;-MMMMMMMMMMMMM-&apos;</b></font>               <font color="#8AE234"><b>CPU</b></font>: Intel(R) Core(TM) i3-3240 (4) @ 3.40 GHz
+<font color="#EEEEEC"><b>               ``-:::::-``</b></font>                  <font color="#8AE234"><b>GPU</b></font>: NVIDIA GeForce GTX 750 [Discrete]
+                                            <font color="#8AE234"><b>Memory</b></font>: 4.56 GiB / 7.71 GiB (<font color="#FCE94F">59%</font>)
+                                            <font color="#8AE234"><b>Swap</b></font>: 76.00 MiB / 2.00 GiB (<font color="#4E9A06">4%</font>)
+                                            <font color="#8AE234"><b>Disk (/)</b></font>: 572.84 GiB / 937.33 GiB (<font color="#FCE94F">61%</font>) - ext4
+                                            <font color="#8AE234"><b>Disk (/media/jonathansteadman/JonSteadman)</b></font>: 31.43 GiB / 937.81 GiB (<font color="#4E9A06">3%</font>) - ext4
+                                            <font color="#8AE234"><b>Local IP (enp3s0)</b></font>: 192.168.0.106/24
+                                            <font color="#8AE234"><b>Locale</b></font>: en_US.UTF-8
+
+                                            <span style="background-color:#2E3436">   </span><span style="background-color:#CC0000">   </span><span style="background-color:#4E9A06">   </span><span style="background-color:#C4A000">   </span><span style="background-color:#3465A4">   </span><span style="background-color:#75507B">   </span><span style="background-color:#06989A">   </span><span style="background-color:#D3D7CF">   </span>
+                                            <span style="background-color:#555753">   </span><span style="background-color:#EF2929">   </span><span style="background-color:#8AE234">   </span><span style="background-color:#FCE94F">   </span><span style="background-color:#729FCF">   </span><span style="background-color:#AD7FA8">   </span><span style="background-color:#34E2E2">   </span><span style="background-color:#EEEEEC">   </span>
+<font color="#8AE234">jonathansteadman</font>@jonathansteadman-desktop <font color="#4E9A06">~</font>&gt; 
+</pre>
+</div>
+  <h1 style="text-align: center;">My future upgrade plans: <br>
+      <br>
+        <ul>
+        <li>Memory: DDR 3 8GB -> DDR 3 16GB</li>
+        <li>CPU: Intel i3-3240 -> Intel i5-3570</li>
+    </ul></h1>
+
+
+<script>
+  // Mobile burger menu functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.querySelector('.navbar-burger');
+    const menu = document.querySelector('#navbarBasic');
+    
+    if (burger && menu) {
+      burger.addEventListener('click', () => {
+        burger.classList.toggle('is-active');
+        menu.classList.toggle('is-active');
+      });
+    }
+    
+    // Active menu item functionality
+    const navItems = document.querySelectorAll('.navbar-item');
+    
+    function setActiveItem(clickedItem) {
+      // Remove active class from all items
+      navItems.forEach(item => {
+        item.classList.remove('active');
+      });
+      // Add active class to clicked item
+      clickedItem.classList.add('active');
+      
+      // Close mobile menu after clicking (optional)
+      if (window.innerWidth <= 1023) {
+        burger.classList.remove('is-active');
+        menu.classList.remove('is-active');
+      }
+    }
+    
+    // Add click event to each nav item
+    navItems.forEach(item => {
+      item.addEventListener('click', function(e) {
+        setActiveItem(this);
+      });
+    });
+    
+    // *** FIX: Check current page and set active class ***
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    
+    if (currentPage === 'index.html') {
+      document.getElementById('homeLink').classList.add('active');
+    } else if (currentPage === 'MySystemInfo.html') {
+      document.getElementById('systemInfoLink').classList.add('active');
+    }
+  });
+</script>
+
+</body>
+</html>

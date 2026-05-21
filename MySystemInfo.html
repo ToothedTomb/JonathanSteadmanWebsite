@@ -81,6 +81,9 @@
       <a class="navbar-item" id="systemInfoLink" href="MySystemInfo.html">
         My System Information
       </a>
+            <a class="navbar-item" id="EducationLink" href="education.html">My Education
+        </a>
+
     </div>
   </div>
 </nav>
@@ -252,7 +255,9 @@ Type <font color="#4E9A06">help</font> for instructions on how to use fish
     } else if (currentPage === 'MySystemInfo.html') {
       document.getElementById('systemInfoLink').classList.add('active');
     }
-  });
+    else if (currentPage === 'education.html') {
+      document.getElementById('EducationLink').classList.add('active');
+    }  });
 </script>
 
 </body>

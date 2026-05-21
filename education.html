@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>𝕵𝖔𝖓𝖆𝖙𝖍𝖆𝖓 𝕾𝖙𝖊𝖆𝖉𝖒𝖆𝖓</title>
+  
+  <link rel="stylesheet" href="bulma.css">
+  <link rel="icon" type="image/png" href="Assets/icon.png"> 
+  <h1 style="text-align: center;">𝕵𝖔𝖓𝖆𝖙𝖍𝖆𝖓 𝕾𝖙𝖊𝖆𝖉𝖒𝖆𝖓</h1>
+  <hr>
+  <style>
+    /* Fix navbar centering */
+    .navbar-menu {
+      justify-content: center;
+    }
+    .navbar-start {
+      justify-content: center;
+      flex-grow: 1;
+    }
+    .navbar-end {
+      display: none;
+    }
+    
+    /* Active menu item styling */
+    .navbar-item.active {
+      background-color: #77676791;
+      color: #000000;
+      border-radius: 4px;
+    }
+    
+    /* Ensure burger button is visible on mobile */
+    .navbar-burger {
+      display: none;
+    }
+    
+    @media screen and (max-width: 1023px) {
+      .navbar-burger {
+        display: block;
+      }
+      .navbar-menu {
+        display: none;
+      }
+      .navbar-menu.is-active {
+        display: block;
+      }
+      .navbar-start {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem;
+      }
+      .navbar-item {
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+      }
+      .navbar-item.active {
+        width: auto;
+        min-width: 200px;
+      }
+    }
+            
+    pre {
+      border-radius: 16px;
+      padding: 2rem;
+      font-size: 14px;
+      line-height: 1.5;
+      font-family: 'Courier New', 'Menlo', monospace;
+      max-width: 1100px;
+      width: 100%;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      box-shadow: 8px 8px 20px rgba(0,0,0,0.1);
+      margin: auto;
+    }
+
+    /* Dark mode grade tables */
+    .grades-table {
+      max-width: 900px;
+      margin: 1rem auto;
+      border-collapse: collapse;
+      background: #1e1e2f;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 8px 8px 20px rgba(0,0,0,0.3);
+      font-family: 'Courier New', 'Menlo', monospace;
+      font-size: 13px;
+    }
+    .grades-table th {
+      background: #0f0f1a;
+      color: #e0e0e0;
+      padding: 10px 12px;
+      font-weight: 600;
+      text-align: left;
+      border-bottom: 1px solid #2a2a3a;
+    }
+    .grades-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #2a2a3a;
+      color: #d4d4d4;
+    }
+    .grades-table tr:last-child td {
+      border-bottom: none;
+    }
+    .grade-dist {
+      color: #6fcf97;
+      font-weight: bold;
+    }
+    .grade-merit {
+      color: #f5b041;
+      font-weight: bold;
+    }
+    .grade-pass {
+      color: #5dade2;
+      font-weight: bold;
+    }
+    .degree-title {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      font-family: monospace;
+      color: #2c3e4e;
+    }
+  </style>
+</head>
+
+<body>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasic" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" id="homeLink" href="index.html">
+        Home
+      </a>
+      <a class="navbar-item" id="systemInfoLink" href="MySystemInfo.html">
+        My System Information
+      </a>
+      <a class="navbar-item" id="EducationLink" href="#">
+        My Education
+      </a>
+    </div>
+  </div>
+</nav>
+
+<u>
+  <br><br>
+  <h1 style="text-align: center;">My Education:</h1> <br>
+</u>
+
+<p style="text-align: center;">The computing education I have gained prepares me to work as a qualified IT professional.</p>  
+<br>
+<h2 style="text-align: center;">It Academy - Belarus:</h2>
+<p style="text-align: center;">I am currently learning Development of web applications in Python but in the future I want to do Linux System Admin.</p>
+<br>
+<p style="text-align: center;"> <a href="https://www.it-academy.by/course/python-developer/pt-python-developer/" target="_blank" class="button"> Development of web applications in Python</a></p>
+<br>
+
+<h2 style="text-align: center;">Bath College - England:</h2> <br>
+
+<!-- Degree 1: BTEC Level 3 -->
+<div class="degree-title">PEARSON BTEC LEVEL 3 NATIONAL EXTENDED DIPLOMA in INFORMATION TECHNOLOGY (July 2023)</div>
+<table class="grades-table">
+  <thead>
+    <tr><th>Subject</th><th>Credits</th><th>Grade</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Information Technology Systems</td><td>12.0</td><td class="grade-pass">PASS</td></tr>
+    <tr><td>Creating Systems to Manage Information</td><td>9.0</td><td class="grade-pass">PASS</td></tr>
+    <tr><td>Using Social Media in Business</td><td>9.0</td><td class="grade-dist">DISTINCTION</td></tr>
+    <tr><td>Programming</td><td>9.0</td><td class="grade-merit">MERIT</td></tr>
+    <tr><td>Website Development</td><td>6.0</td><td class="grade-dist">DISTINCTION</td></tr>
+    <tr><td>Mobile Apps Development</td><td>6.0</td><td class="grade-dist">DISTINCTION</td></tr>
+    <tr><td>IT Project Management</td><td>9.0</td><td class="grade-dist">DISTINCTION</td></tr>
+    <tr><td>Cyber Security and Incident Management</td><td>12.0</td><td class="grade-pass">PASS</td></tr>
+    <tr><td>IT Service Delivery</td><td>12.0</td><td class="grade-merit">MERIT</td></tr>
+    <tr><td>Data Modelling</td><td>6.0</td><td class="grade-dist">DISTINCTION</td></tr>
+    <tr><td>Computer Games Development</td><td>6.0</td><td class="grade-dist">DISTINCTION</td></tr>
+    <tr><td>Customising and Integrating Applications</td><td>6.0</td><td class="grade-dist">DISTINCTION</td></tr>
+    <tr><td>Enterprise in IT</td><td>6.0</td><td class="grade-merit">MERIT</td></tr>
+  </tbody>
+</table>
+<div style="text-align: center; font-family: monospace; margin-bottom: 1.5rem; color: #2c3e4e;">🏅 Overall: DISTINCTION - DISTINCTION - DISTINCTION</div>
+
+<!-- Degree 2: BTEC Level 1 -->
+<div class="degree-title">PEARSON BTEC LEVEL 1 INTRODUCTORY DIPLOMA in INFORMATION TECHNOLOGY (August 2020)</div>
+<table class="grades-table">
+  <thead>
+    <tr><th>Subject</th><th>Hours</th><th>Grade</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Being Organised</td><td>30.0</td><td class="grade-dist">DISTINCTION</td></tr>
+    <tr><td>Developing a Personal Progression Plan</td><td>30.0</td><td class="grade-dist">DISTINCTION</td></tr>
+    <tr><td>Working with Others</td><td>30.0</td><td class="grade-pass">PASS</td></tr>
+    <tr><td>Researching a Topic</td><td>30.0</td><td class="grade-pass">PASS</td></tr>
+    <tr><td>Using Digital Communication Technologies</td><td>40.0</td><td class="grade-dist">DISTINCTION</td></tr>
+    <tr><td>Solving Technical IT Problems</td><td>40.0</td><td class="grade-merit">MERIT</td></tr>
+    <tr><td>Creating a Spreadsheet to Solve Problems</td><td>40.0</td><td class="grade-merit">MERIT</td></tr>
+    <tr><td>Creating a Computer Program</td><td>40.0</td><td class="grade-dist">DISTINCTION</td></tr>
+    <tr><td>Creating a Digital Animated Graphic</td><td>40.0</td><td class="grade-merit">MERIT</td></tr>
+  </tbody>
+</table>
+
+<!-- Degree 3: BTEC Level 2 -->
+<div class="degree-title">BTEC FIRST EXTENDED CERTIFICATE in INFORMATION AND CREATIVE TECHNOLOGY - LEVEL 2 (June 2021)</div>
+<div style="text-align: center; font-family: monospace; margin-bottom: 1.5rem; font-weight: bold; color: #2c3e4e;">Double Grade: DISTINCTION - DISTINCTION</div>
+
+<br>
+<p style="text-align: center;"> <a href="https://www.linkedin.com/posts/jonathan-steadman-b4846a19b_ict-certificate-at-bath-college-ugcPost-7283423312163049472-RUpd?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC7gT-gBncfXOLJC7qwRNbWsNQpXe_96DZs" target="_blank" class="button">My Bath College certificates</a></p>
+
+<div style="display: flex; justify-content: center;">
+<script>
+  // Mobile burger menu functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.querySelector('.navbar-burger');
+    const menu = document.querySelector('#navbarBasic');
+    
+    if (burger && menu) {
+      burger.addEventListener('click', () => {
+        burger.classList.toggle('is-active');
+        menu.classList.toggle('is-active');
+      });
+    }
+    
+    // Active menu item functionality
+    const navItems = document.querySelectorAll('.navbar-item');
+    
+    function setActiveItem(clickedItem) {
+      navItems.forEach(item => {
+        item.classList.remove('active');
+      });
+      clickedItem.classList.add('active');
+      
+      if (window.innerWidth <= 1023) {
+        burger.classList.remove('is-active');
+        menu.classList.remove('is-active');
+      }
+    }
+    
+    navItems.forEach(item => {
+      item.addEventListener('click', function(e) {
+        setActiveItem(this);
+      });
+    });
+    
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    
+    if (currentPage === 'index.html') {
+      document.getElementById('homeLink').classList.add('active');
+    } else if (currentPage === 'MySystemInfo.html') {
+      document.getElementById('systemInfoLink').classList.add('active');
+    } else if (currentPage === 'education.html') {
+      document.getElementById('EducationLink').classList.add('active');
+    }
+  });
+</script>
+</body>
+</html>

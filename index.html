@@ -81,7 +81,9 @@
       <a class="navbar-item" id="systemInfoLink" href="MySystemInfo.html">
         My System Information
       </a>
-    </div>
+      <a class="navbar-item" id="EducationLink" href="education.html">My Education
+        </a>
+      </div>
   </div>
 </nav>
 
@@ -100,6 +102,7 @@
 <p style="text-align: center;"> 
   <a href="https://jonathan-linux.itch.io/" target="_blank" class="button">Check out my projects</a> 
   <a href="https://www.youtube.com/@JonathanSteadman2003" target="_blank" class="button">Check out my Youtube Channel</a> 
+  <a href="https://www.linkedin.com/in/jonathan-steadman-b4846a19b/" target="_blank" class="button"> Check out my Linkedin</a> 
 </p>
 <br>
 <u>
@@ -163,7 +166,9 @@
     } else if (currentPage === 'MySystemInfo.html') {
       document.getElementById('systemInfoLink').classList.add('active');
     }
-  });
+    else if (currentPage === 'education.html') {
+      document.getElementById('EducationLink').classList.add('active');
+    }  });
 </script>
 
 </body>

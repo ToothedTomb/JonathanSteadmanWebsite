@@ -510,26 +510,25 @@ function toggleMinimize(appId) {
   else info.taskBtn.classList.remove('focused');
 }
 
+
 /* ---------- Drag support (Windows) ---------- */
 function makeWindowDraggable(win) {
   const bar = win.querySelector('.window-bar');
   let dragging = false, startX = 0, startY = 0, startLeft = 0, startTop = 0;
 
-  bar.addEventListener('mousedown', (e) => {
-    if (e.target.tagName === 'BUTTON') return;
+  const startDrag = (clientX, clientY) => {
     dragging = true;
-    startX = e.clientX;
-    startY = e.clientY;
+    startX = clientX;
+    startY = clientY;
     startLeft = win.offsetLeft;
     startTop = win.offsetTop;
     focusWindow(win);
-    e.preventDefault();
-  });
+  };
 
-  window.addEventListener('mousemove', (e) => {
+  const doDrag = (clientX, clientY) => {
     if (!dragging) return;
-    const dx = e.clientX - startX;
-    const dy = e.clientY - startY;
+    const dx = clientX - startX;
+    const dy = clientY - startY;
     let newLeft = startLeft + dx;
     let newTop  = startTop  + dy;
     const maxLeft = window.innerWidth - 100;
@@ -538,42 +537,77 @@ function makeWindowDraggable(win) {
     newTop  = Math.max(0, Math.min(newTop, maxTop));
     win.style.left = newLeft + 'px';
     win.style.top  = newTop  + 'px';
-  });
+  };
 
+  // Mouse events
+  bar.addEventListener('mousedown', (e) => {
+    if (e.target.tagName === 'BUTTON') return;
+    startDrag(e.clientX, e.clientY);
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove', (e) => doDrag(e.clientX, e.clientY));
   window.addEventListener('mouseup', () => { dragging = false; });
+
+  // Touch events
+  bar.addEventListener('touchstart', (e) => {
+    if (e.target.tagName === 'BUTTON') return;
+    const touch = e.touches[0];
+    startDrag(touch.clientX, touch.clientY);
+  }, { passive: true });
+  window.addEventListener('touchmove', (e) => {
+    if (!dragging) return;
+    const touch = e.touches[0];
+    doDrag(touch.clientX, touch.clientY);
+    e.preventDefault(); // Prevent scrolling while dragging
+  }, { passive: false });
+  window.addEventListener('touchend', () => { dragging = false; });
 }
 
 /* ---------- Drag support (Desktop Icons) ---------- */
 function makeIconDraggable(icon) {
   let dragging = false, startX = 0, startY = 0, startLeft = 0, startTop = 0;
 
-  icon.addEventListener('mousedown', (e) => {
+  const startDrag = (clientX, clientY) => {
     dragging = true;
-    startX = e.clientX;
-    startY = e.clientY;
+    startX = clientX;
+    startY = clientY;
     startLeft = icon.offsetLeft;
     startTop = icon.offsetTop;
-    e.preventDefault();
-  });
+  };
 
-  window.addEventListener('mousemove', (e) => {
+  const doDrag = (clientX, clientY) => {
     if (!dragging) return;
-    const dx = e.clientX - startX;
-    const dy = e.clientY - startY;
-
+    const dx = clientX - startX;
+    const dy = clientY - startY;
     let newLeft = startLeft + dx;
     let newTop  = startTop  + dy;
-
     newLeft = Math.max(0, Math.min(newLeft, window.innerWidth - 100));
     newTop  = Math.max(0, Math.min(newTop, window.innerHeight - 150));
-
     icon.style.left = newLeft + 'px';
     icon.style.top  = newTop  + 'px';
+  };
+
+  // Mouse events
+  icon.addEventListener('mousedown', (e) => {
+    startDrag(e.clientX, e.clientY);
+    e.preventDefault();
   });
-
+  window.addEventListener('mousemove', (e) => doDrag(e.clientX, e.clientY));
   window.addEventListener('mouseup', () => { dragging = false; });
-}
 
+  // Touch events
+  icon.addEventListener('touchstart', (e) => {
+    const touch = e.touches[0];
+    startDrag(touch.clientX, touch.clientY);
+  }, { passive: true });
+  window.addEventListener('touchmove', (e) => {
+    if (!dragging) return;
+    const touch = e.touches[0];
+    doDrag(touch.clientX, touch.clientY);
+    e.preventDefault(); // Prevent page scrolling while dragging an icon
+  }, { passive: false });
+  window.addEventListener('touchend', () => { dragging = false; });
+}
 /* ---------- Start menu ---------- */
 function toggleStartMenu() {
   startMenu.classList.toggle('hidden');

@@ -26,6 +26,14 @@ html, body {
   pointer-events: none;
 }
 
+/* Custom wallpaper (overrides the default gradient) */
+.desktop.custom-bg {
+  background: var(--custom-bg, linear-gradient(160deg, #0d0a15 0%, #05040a 100%)) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
 /* ================= Desktop icons ================= */
 .desktop-icons {
   position: absolute;
@@ -57,10 +65,10 @@ html, body {
   filter: drop-shadow(0 2px 3px rgba(0,0,0,0.7));
   pointer-events: none;
 }
-.desktop-icon span { 
-  line-height: 1.15; 
-  word-break: break-word; 
-  pointer-events: none; 
+.desktop-icon span {
+  line-height: 1.15;
+  word-break: break-word;
+  pointer-events: none;
 }
 
 /* ================= Windows ================= */
@@ -294,6 +302,129 @@ html, body {
   margin: 6px 6px;
 }
 
+/* ================= Settings / Wallpaper UI ================= */
+.settings-group {
+  background: #14141c;
+  border: 1px solid #26263a;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 18px;
+}
+.settings-group h3 { margin-top: 0; }
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 10px;
+  margin: 10px 0;
+}
+.swatch {
+  height: 60px;
+  border-radius: 8px;
+  border: 2px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+  transition: transform 0.15s, border-color 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+.swatch:hover { transform: scale(1.05); border-color: rgba(200,162,255,0.6); }
+.swatch.active { border-color: #c8a2ff; box-shadow: 0 0 0 3px rgba(200,162,255,0.3); }
+.swatch input[type="color"] {
+  position: absolute; inset: 0; opacity: 0; cursor: pointer;
+  width: 100%; height: 100%; border: none; padding: 0;
+}
+
+/* ================= CV / LibreOffice Writer ================= */
+.cv-editor {
+  display: flex; flex-direction: column; height: 100%;
+}
+.cv-toolbar {
+  display: flex; flex-wrap: wrap; gap: 4px;
+  padding: 6px 10px;
+  background: #23232e;
+  border-bottom: 1px solid #11111a;
+  align-items: center;
+  flex-shrink: 0;
+}
+.cv-toolbar .tb-group {
+  display: flex; gap: 2px; padding-right: 6px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  margin-right: 6px;
+  align-items: center;
+}
+.cv-toolbar button, .cv-toolbar select {
+  background: #2c2c3a;
+  color: #e6e6ef;
+  border: 1px solid #3a3a4c;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  min-width: 26px;
+  height: 26px;
+}
+.cv-toolbar button:hover { background: #3d3d55; }
+.cv-toolbar button.active { background: #5a2a7a; border-color: #7b3fa0; }
+.cv-toolbar select { min-width: 120px; padding: 2px 6px; }
+
+.cv-page-area {
+  flex: 1;
+  overflow: auto;
+  background: #4a4a55;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.cv-page {
+  background: #ffffff;
+  color: #1a1a1a;
+  width: 794px;
+  min-height: 1123px;
+  padding: 72px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  font-size: 12pt;
+  line-height: 1.35;
+  outline: none;
+  flex-shrink: 0;
+}
+.cv-page:focus { box-shadow: 0 6px 24px rgba(0,0,0,0.5), 0 0 0 2px #8ab4f8; }
+.cv-page h1 {
+  font-family: 'Liberation Sans', Arial, sans-serif;
+  font-size: 22pt; margin: 0 0 4pt; color: #1a1a1a; font-weight: bold;
+}
+.cv-page h2 {
+  font-family: 'Liberation Sans', Arial, sans-serif;
+  font-size: 14pt; margin: 14pt 0 6pt; color: #1a1a1a;
+  border-bottom: 1px solid #999; padding-bottom: 2pt; font-weight: bold;
+}
+.cv-page h3 {
+  font-family: 'Liberation Sans', Arial, sans-serif;
+  font-size: 12pt; margin: 10pt 0 3pt; color: #1a1a1a; font-weight: bold;
+}
+.cv-page p { margin: 0 0 6pt; }
+.cv-page ul { margin: 0 0 6pt 18pt; padding: 0; }
+.cv-page ol { margin: 0 0 6pt 18pt; padding: 0; }
+.cv-page li { margin: 0 0 2pt; }
+.cv-page a { color: #1a4b8c; text-decoration: underline; }
+.cv-page .meta { color: #555; font-style: italic; margin-bottom: 4pt; }
+
+.cv-page-header {
+  text-align: center;
+  border-bottom: 2px solid #333;
+  padding-bottom: 10pt;
+  margin-bottom: 14pt;
+}
+.cv-page-header h1 { font-size: 20pt; margin-bottom: 2pt; }
+.cv-page-header .subtitle {
+  font-family: sans-serif; font-size: 11pt; color: #444; margin-bottom: 6pt;
+}
+.cv-page-header .contact { font-size: 10pt; color: #333; }
+
+@media (max-width: 900px) {
+  .cv-page { width: 100%; padding: 24px; }
+}
+
 /* ================= Mobile fallback ================= */
 @media (max-width: 768px) {
   .window {
@@ -303,4 +434,5 @@ html, body {
     resize: none;
   }
   #taskbar-clock .clock-date { display: none; }
+}
 }

@@ -209,6 +209,163 @@ jonathansteadman@jonathansteadman-desktop ~&gt; fastfetch
         <canvas id="game-canvas" style="display:block; width:100%; height:100%;"></canvas>
       </div>
     `
+  },
+
+  experience: {
+    title: 'My Experience',
+    icon: '💼',
+    body: `
+      <h1>Work &amp; Project Experience</h1>
+      <p>Hands-on experience across full-stack Python development, plus real-world work history.</p>
+
+      <h2>Backend Developer — Final Course Project</h2>
+      <h3>IT-Academy · Gomel (Remote) · June 2026 – September 2026</h3>
+      <p>Designed and built a full-stack web application as the capstone project of the Python Web Application Development course. The application provides user authentication, a RESTful API, and a PostgreSQL-backed data layer.</p>
+      <ul>
+        <li>Architected the application using Django and Django REST Framework, with clean separation between models, views, and serializers.</li>
+        <li>Implemented JWT-based authentication for secure, stateless API access.</li>
+        <li>Designed the database schema in PostgreSQL and managed all changes through Django migrations.</li>
+        <li>Containerized the application with Docker and Docker Compose for consistent dev/prod environments.</li>
+        <li>Wrote unit tests to validate business logic and protect against regressions.</li>
+        <li>Documented the API with Swagger / OpenAPI for ease of integration and review.</li>
+      </ul>
+      <p><strong>Stack:</strong> Python, Django, DRF, PostgreSQL, Docker, JWT, Swagger</p>
+      <p>
+        <a class="btn" href="https://github.com/ToothedTomb/final_project" target="_blank" rel="noopener">View on GitHub</a>
+      </p>
+
+      <h2>Farm Worker</h2>
+      <h3>Mokroe Farm — Brest Region, Belarus · Jan 2025 – Present</h3>
+      <ul>
+        <li>Provide daily care for young cattle, including feeding, health monitoring, and maintaining clean, hygienic housing.</li>
+        <li>Work outdoors in all weather conditions, demonstrating physical stamina, reliability, and consistency.</li>
+        <li>Follow strict animal welfare standards and coordinate with a small team to complete daily routines on schedule.</li>
+      </ul>
+
+      <h2>Kitchen Porter</h2>
+      <h3>The Redan Inn — United Kingdom · Aug 2020 – Aug 2024</h3>
+      <ul>
+        <li>Maintained cleanliness and hygiene standards in a fast-paced commercial kitchen during peak service hours.</li>
+        <li>Worked as part of a team to meet tight deadlines and keep service running smoothly.</li>
+        <li>Balanced part-time work with full-time college studies, developing strong time management and resilience.</li>
+      </ul>
+
+      <h2>Professional Interests</h2>
+      <p>Backend development, API design, cloud technologies, and building scalable web applications.</p>
+
+      <h2>Summary</h2>
+      <p>Junior Python Developer with hands-on experience building full-stack web applications using Django, Django REST Framework, and FastAPI. Recently completed the professional <strong>Python Web Application Development</strong> course at IT-Academy, where I designed and delivered a containerized REST API with JWT authentication, PostgreSQL, and automated testing. Comfortable across the backend stack — from data modelling and API design to Docker-based deployment and CI/CD. Seeking a junior backend or full-stack role where I can contribute to production code and continue growing under experienced engineers.</p>
+    `
+  },
+
+  cv: {
+    title: 'JonathanSteadmanCV.docx — LibreOffice Writer',
+    icon: '📄',
+    body: `
+      <div class="cv-editor">
+        <div class="cv-toolbar">
+          <div class="tb-group">
+            <select id="cv-style">
+              <option value="p">Paragraph</option>
+              <option value="h1">Heading 1</option>
+              <option value="h2">Heading 2</option>
+              <option value="h3">Heading 3</option>
+            </select>
+          </div>
+          <div class="tb-group">
+            <button data-cmd="bold" title="Bold"><b>B</b></button>
+            <button data-cmd="italic" title="Italic"><i>I</i></button>
+            <button data-cmd="underline" title="Underline"><u>U</u></button>
+          </div>
+          <div class="tb-group">
+            <button data-cmd="insertUnorderedList" title="Bullet list">• List</button>
+            <button data-cmd="insertOrderedList" title="Numbered list">1. List</button>
+          </div>
+          <div class="tb-group">
+            <button id="cv-print" title="Print / Export PDF">🖨️ Print</button>
+          </div>
+          <div class="tb-group" style="border:none;">
+            <span style="font-size:11px;opacity:0.6;">A4 · 12pt · Click in the page to edit</span>
+          </div>
+        </div>
+        <div class="cv-page-area">
+          <div class="cv-page" id="cv-page" contenteditable="true" spellcheck="true">
+            <div class="cv-page-header">
+              <h1>Jonathan Ryan Steadman</h1>
+              <div class="subtitle">Python Web Developer</div>
+              <div class="contact">
+                Brest, Belarus · +375 44 591 7586 · steadmanjon31@gmail.com<br>
+                <a href="https://linkedin.com/in/jonathan-steadman-b4846a19b">linkedin.com/in/jonathan-steadman-b4846a19b</a>
+                · <a href="https://github.com/ToothedTomb">github.com/ToothedTomb</a>
+              </div>
+            </div>
+
+            <h2>Professional Summary</h2>
+            <p>Junior Python Developer with hands-on experience building full-stack web applications using Django, Django REST Framework, and FastAPI. Recently completed the professional <b>Python Web Application Development</b> course at IT-Academy, where I designed and delivered a containerized REST API with JWT authentication, PostgreSQL, and automated testing. Comfortable across the backend stack — from data modelling and API design to Docker-based deployment and CI/CD. Seeking a junior backend or full-stack role where I can contribute to production code and continue growing under experienced engineers.</p>
+
+            <h2>Technical Skills</h2>
+            <ul>
+              <li><b>Languages:</b> Python</li>
+              <li><b>Frameworks:</b> Django, Django REST Framework, FastAPI</li>
+              <li><b>Databases:</b> PostgreSQL, SQL, Django ORM, migrations</li>
+              <li><b>Tools &amp; DevOps:</b> Git, Docker, Docker Compose, GitHub Actions (CI/CD), Celery, Postman</li>
+              <li><b>Concepts:</b> RESTful API design, JWT authentication, OOP, asyncio, threading, multiprocessing, unit testing</li>
+              <li><b>Documentation:</b> Swagger / OpenAPI</li>
+            </ul>
+
+            <h2>Project Experience</h2>
+            <h3>Backend Developer — Final Course Project</h3>
+            <div class="meta">IT-Academy, Gomel (Remote) · June 2026 – September 2026</div>
+            <p>Designed and built a full-stack web application as the capstone project of the Python Web Application Development course. The application provides user authentication, a RESTful API, and a PostgreSQL-backed data layer.</p>
+            <ul>
+              <li>Architected the application using Django and Django REST Framework, with a clean separation between models, views, and serializers.</li>
+              <li>Implemented JWT-based authentication for secure, stateless API access.</li>
+              <li>Designed the database schema in PostgreSQL and managed all changes through Django migrations.</li>
+              <li>Containerized the application with Docker and Docker Compose to guarantee consistent development and deployment environments.</li>
+              <li>Wrote unit tests to validate business logic and protect against regressions.</li>
+              <li>Documented the API with Swagger / OpenAPI for ease of integration and review.</li>
+            </ul>
+            <p><b>Stack:</b> Python, Django, DRF, PostgreSQL, Docker, JWT, Swagger<br>
+            <b>Repository:</b> <a href="https://github.com/ToothedTomb/final_project">github.com/ToothedTomb/final_project</a></p>
+
+            <h2>Work Experience</h2>
+            <h3>Farm Worker</h3>
+            <div class="meta">Mokroe Farm — Brest Region, Belarus · January 2025 – Present</div>
+            <ul>
+              <li>Provide daily care for young cattle, including feeding, health monitoring, and maintaining clean, hygienic housing.</li>
+              <li>Work outdoors in all weather conditions, demonstrating physical stamina, reliability, and consistency.</li>
+              <li>Follow strict animal welfare standards and coordinate with a small team to complete daily routines on schedule.</li>
+            </ul>
+            <h3>Kitchen Porter</h3>
+            <div class="meta">The Redan Inn — United Kingdom · August 2020 – August 2024</div>
+            <ul>
+              <li>Maintained cleanliness and hygiene standards in a fast-paced commercial kitchen during peak service hours.</li>
+              <li>Worked as part of a team to meet tight deadlines and keep service running smoothly.</li>
+              <li>Balanced part-time work with full-time college studies, developing strong time management and resilience.</li>
+            </ul>
+
+            <h2>Education</h2>
+            <h3>Educational Center for Programming and High Tech (IT-Academy)</h3>
+            <div class="meta">Gomel, Belarus (Remote) · June 2026 – September 2026</div>
+            <p><b>Course: Python Web Application Development</b> — a comprehensive professional course covering Python Core, OOP, Django, DRF, database design (SQL, ORM, migrations), Docker, CI/CD, asynchronous and parallel programming, FastAPI, WebSockets, and cloud services. The course culminated in a project-based capstone delivered as a production-style Django application.</p>
+            <h3>Bath College</h3>
+            <div class="meta">Bath, United Kingdom · August 2023 – August 2024</div>
+            <p><b>Pearson BTEC Level 3 National Extended Diploma in Information Technology</b><br>
+            Grade: <b>Triple Distinction (DDD)</b> — highest achievable grade.<br>
+            IT Student of the Year Award.</p>
+
+            <h2>Languages</h2>
+            <ul>
+              <li><b>English:</b> Native</li>
+              <li><b>Russian:</b> Basic</li>
+            </ul>
+
+            <h2>Professional Interests</h2>
+            <p>Backend development, API design, cloud technologies, and building scalable web applications.</p>
+          </div>
+        </div>
+      </div>
+    `
   }
 };
 
@@ -264,6 +421,16 @@ function openApp(appId) {
     win.style.height = '650px';
   }
 
+  if (appId === 'experience') {
+    win.style.width = '820px';
+    win.style.height = '680px';
+  }
+
+  if (appId === 'cv') {
+    win.style.width = '960px';
+    win.style.height = '720px';
+  }
+
   win.innerHTML = `
     <div class="window-bar">
       <span class="window-title">${app.icon} ${app.title}</span>
@@ -308,9 +475,12 @@ function openApp(appId) {
 
   makeWindowDraggable(win);
 
-  // Initialize the game if this is the game app
+  // Initialize specific apps
   if (appId === 'game') {
     initGame();
+  }
+  if (appId === 'cv') {
+    initCVEditor();
   }
 
   closeStartMenu();
@@ -439,6 +609,58 @@ function launchFromTrigger(el) {
   const url = el.dataset.url;
   if (app) { openApp(app); return; }
   if (url) { window.open(url, '_blank', 'noopener'); return; }
+}
+
+/* ---------- CV editor helpers ---------- */
+function initCVEditor() {
+  const page = document.getElementById('cv-page');
+  if (!page) return;
+
+  // Toolbar commands
+  document.querySelectorAll('.cv-toolbar button[data-cmd]').forEach(btn => {
+    btn.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      document.execCommand(btn.dataset.cmd, false, null);
+      page.focus();
+    });
+  });
+
+  // Block-style select
+  const styleSelect = document.getElementById('cv-style');
+  if (styleSelect) {
+    styleSelect.addEventListener('change', () => {
+      document.execCommand('formatBlock', false, styleSelect.value);
+      page.focus();
+    });
+  }
+
+  // Print button
+  const printBtn = document.getElementById('cv-print');
+  if (printBtn) {
+    printBtn.addEventListener('click', () => {
+      const printWin = window.open('', '_blank');
+      if (!printWin) return;
+      printWin.document.write(`
+        <html><head><title>Jonathan Steadman — CV</title>
+        <style>
+          body { margin: 0; background: #fff; }
+          .cv-page { width: 794px; padding: 72px; font-family: 'Liberation Serif','Times New Roman',serif; font-size: 12pt; line-height: 1.35; color: #1a1a1a; margin: 0 auto; }
+          .cv-page h1 { font-family: Arial, sans-serif; font-size: 22pt; }
+          .cv-page h2 { font-family: Arial, sans-serif; font-size: 14pt; border-bottom: 1px solid #999; padding-bottom: 2pt; }
+          .cv-page h3 { font-family: Arial, sans-serif; font-size: 12pt; }
+          .cv-page .meta { color: #555; font-style: italic; }
+          .cv-page-header { text-align: center; border-bottom: 2px solid #333; padding-bottom: 10pt; }
+          .cv-page a { color: #1a4b8c; }
+          @media print { .cv-page { width: auto; padding: 0.75in; } }
+        </style></head><body>
+          ${page.outerHTML}
+        </body></html>
+      `);
+      printWin.document.close();
+      printWin.focus();
+      setTimeout(() => { printWin.print(); }, 300);
+    });
+  }
 }
 
 /* ---------- Initialization & Setup ---------- */

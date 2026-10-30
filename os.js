@@ -198,15 +198,25 @@ jonathansteadman@jonathansteadman-desktop ~&gt; fastfetch
     title: 'Vibe Coded 3D Car Game',
     icon: '🏎️',
     body: `
-      <h1>Vibe Coded 3D Car Game</h1>
-      <p>This mini-game was completely <strong>vibe coded</strong> using Three.js. Steer left and right to avoid going off the road!</p>
+      <h1>3D Neon Traffic Dodger</h1>
+      <p>Dodge the incoming traffic! The game gets faster the longer you survive. How high can you score?</p>
       <div style="display: flex; gap: 10px; margin-bottom: 10px; align-items: center;">
         <p style="margin:0;">Controls:</p>
         <span style="background:#333; padding: 2px 8px; border-radius:4px; font-family:monospace;">A / Left Arrow</span>
         <span style="background:#333; padding: 2px 8px; border-radius:4px; font-family:monospace;">D / Right Arrow</span>
       </div>
-      <div id="game-container" style="width:100%; height:450px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.15); background: #000; position: relative; cursor: crosshair;">
+      <div id="game-container" style="width:100%; height:450px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.15); background: #000; position: relative;">
         <canvas id="game-canvas" style="display:block; width:100%; height:100%;"></canvas>
+        <!-- UI Overlays -->
+        <div id="game-ui" style="position:absolute; top:10px; left:15px; color:#fff; font-family:monospace; font-size:18px; text-shadow: 0 0 5px #0ff, 0 0 10px #0ff; pointer-events:none;">
+          Score: <span id="game-score">0</span><br>
+          Best: <span id="game-best">0</span>
+        </div>
+        <div id="game-over" style="display:none; position:absolute; inset:0; background:rgba(0,0,0,0.8); flex-direction:column; justify-content:center; align-items:center; color:#fff; font-family:sans-serif;">
+          <h2 style="color:#ff0055; font-size:32px; margin-bottom:10px; text-shadow: 0 0 10px #ff0055;">CRASHED!</h2>
+          <p style="font-size:20px; margin-bottom:20px;">Score: <span id="final-score" style="color:#0ff; font-weight:bold;">0</span></p>
+          <button id="restart-btn" class="btn" style="font-size:16px; padding:10px 20px;">Play Again</button>
+        </div>
       </div>
     `
   },
@@ -738,14 +748,25 @@ window.addEventListener('load', () => {
 });
 
 /* ---------- 3D Car Game Logic (Vibe Coded) ---------- */
+let gameLoopId = null;
+
 function initGame() {
   const container = document.getElementById('game-container');
   const canvas = document.getElementById('game-canvas');
   if (!container || !canvas) return;
 
-  // If Three.js is already loaded (e.g. game window reopened), start immediately
+  // Setup UI
+  const scoreEl = document.getElementById('game-score');
+  const bestEl = document.getElementById('game-best');
+  const gameOverEl = document.getElementById('game-over');
+  const finalScoreEl = document.getElementById('final-score');
+  const restartBtn = document.getElementById('restart-btn');
+  
+  bestEl.textContent = localStorage.getItem('neon_dodge_best') || '0';
+
+  // If Three.js is already loaded, start immediately
   if (window.THREE) {
-    startThreeJSGame(canvas, container);
+    startThreeJSGame(canvas, container, scoreEl, bestEl, gameOverEl, finalScoreEl, restartBtn);
     return;
   }
 
@@ -753,7 +774,7 @@ function initGame() {
   const script = document.createElement('script');
   script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
   script.onload = () => {
-    startThreeJSGame(canvas, container);
+    startThreeJSGame(canvas, container, scoreEl, bestEl, gameOverEl, finalScoreEl, restartBtn);
   };
   script.onerror = () => {
     container.innerHTML = '<p style="padding:20px;color:#f88;">Could not load Three.js — check your internet connection.</p>';
@@ -761,42 +782,94 @@ function initGame() {
   document.head.appendChild(script);
 }
 
-function startThreeJSGame(canvas, container) {
-  const scene = new THREE.Scene();
-  scene.fog = new THREE.Fog(0x0b0912, 10, 50);
+function startThreeJSGame(canvas, container, scoreEl, bestEl, gameOverEl, finalScoreEl, restartBtn) {
+  if (gameLoopId) cancelAnimationFrame(gameLoopId);
 
-  const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-  camera.position.set(0, 5, 10);
-  camera.lookAt(0, 0, 0);
+  // --- Scene Setup ---
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.Fog(0x0b0912, 15, 60);
+
+  const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000);
+  camera.position.set(0, 6, 12);
+  camera.lookAt(0, 0, -5);
 
   const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
   renderer.setSize(container.clientWidth, container.clientHeight);
 
   // Lighting
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-  scene.add(ambientLight);
-  const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
-  dirLight.position.set(0, 10, 0);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+  const dirLight = new THREE.DirectionalLight(0xffffff, 0.6);
+  dirLight.position.set(0, 20, 10);
   scene.add(dirLight);
 
-  // The Car
-  const carGeometry = new THREE.BoxGeometry(1, 0.5, 2);
-  const carMaterial = new THREE.MeshPhongMaterial({ color: 0xff0055, emissive: 0x330011 });
-  const car = new THREE.Mesh(carGeometry, carMaterial);
-  car.position.y = 0.25;
-  scene.add(car);
-
-  // Neon Grid / Road
-  const gridHelper = new THREE.GridHelper(100, 100, 0xff00ff, 0x00ffff);
+  // The Road (Neon Grid)
+  const gridHelper = new THREE.GridHelper(20, 20, 0xff00ff, 0x00ffff);
   gridHelper.position.y = 0;
   scene.add(gridHelper);
 
-  // Game Variables
-  let speed = 0.5;
-  let carX = 0;
-  const keys = { left: false, right: false };
+  // Side Walls (Neon Pillars)
+  const pillarGeo = new THREE.BoxGeometry(1, 2, 1);
+  const pillarMat = new THREE.MeshBasicMaterial({ color: 0xff00ff });
+  const leftPillar = new THREE.Mesh(pillarGeo, pillarMat);
+  const rightPillar = new THREE.Mesh(pillarGeo, pillarMat);
+  leftPillar.position.set(-10.5, 1, 0);
+  rightPillar.position.set(10.5, 1, 0);
+  scene.add(leftPillar, rightPillar);
 
-  // Keyboard Controls
+  // --- Player Car ---
+  const carGroup = new THREE.Group();
+  
+  // Body
+  const carBodyGeo = new THREE.BoxGeometry(1.2, 0.6, 2.5);
+  const carBodyMat = new THREE.MeshPhongMaterial({ color: 0x00ffff, emissive: 0x003333, shininess: 100 });
+  const carBody = new THREE.Mesh(carBodyGeo, carBodyMat);
+  carBody.position.y = 0.4;
+  carGroup.add(carBody);
+
+  // Roof
+  const roofGeo = new THREE.BoxGeometry(0.9, 0.4, 1.2);
+  const roofMat = new THREE.MeshPhongMaterial({ color: 0x222222 });
+  const roof = new THREE.Mesh(roofGeo, roofMat);
+  roof.position.set(0, 0.9, -0.2);
+  carGroup.add(roof);
+
+  // Wheels
+  const wheelGeo = new THREE.CylinderGeometry(0.3, 0.3, 0.2, 16);
+  wheelGeo.rotateZ(Math.PI / 2);
+  const wheelMat = new THREE.MeshPhongMaterial({ color: 0x111111 });
+  const wheelPositions = [[-0.7, 0.3, 0.8], [0.7, 0.3, 0.8], [-0.7, 0.3, -0.8], [0.7, 0.3, -0.8]];
+  wheelPositions.forEach(pos => {
+    const wheel = new THREE.Mesh(wheelGeo, wheelMat);
+    wheel.position.set(...pos);
+    carGroup.add(wheel);
+  });
+
+  // Headlights
+  const lightGeo = new THREE.BoxGeometry(0.3, 0.1, 0.1);
+  const lightMat = new THREE.MeshBasicMaterial({ color: 0xffffaa });
+  const leftLight = new THREE.Mesh(lightGeo, lightMat);
+  leftLight.position.set(-0.4, 0.4, -1.26);
+  const rightLight = new THREE.Mesh(lightGeo, lightMat);
+  rightLight.position.set(0.4, 0.4, -1.26);
+  carGroup.add(leftLight, rightLight);
+
+  carGroup.position.set(0, 0, 0);
+  scene.add(carGroup);
+
+  // --- Game State ---
+  let speed = 0.3;
+  let score = 0;
+  let isGameOver = false;
+  let carX = 0;
+  let targetX = 0;
+  const keys = { left: false, right: false };
+  const enemies = [];
+  let enemySpawnTimer = 0;
+
+  gameOverEl.style.display = 'none';
+  scoreEl.textContent = '0';
+
+  // --- Controls ---
   const onKeyDown = (e) => {
     if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') keys.left = true;
     if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') keys.right = true;
@@ -808,28 +881,136 @@ function startThreeJSGame(canvas, container) {
   window.addEventListener('keydown', onKeyDown);
   window.addEventListener('keyup', onKeyUp);
 
-  // Animation Loop
+  // --- Enemy Spawner ---
+  function spawnEnemy() {
+    const enemyGroup = new THREE.Group();
+    const colors = [0xff0055, 0xffaa00, 0xff00ff];
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    
+    const bodyGeo = new THREE.BoxGeometry(1.2, 0.6, 2.5);
+    const bodyMat = new THREE.MeshPhongMaterial({ color: color, emissive: color, emissiveIntensity: 0.3 });
+    const body = new THREE.Mesh(bodyGeo, bodyMat);
+    body.position.y = 0.4;
+    enemyGroup.add(body);
+
+    // Random lane (-6, -3, 0, 3, 6) -> we'll use 3 lanes for simplicity: -3, 0, 3
+    const lanes = [-3, 0, 3];
+    const lane = lanes[Math.floor(Math.random() * lanes.length)];
+    
+    enemyGroup.position.set(lane, 0, -60); // Spawn far away
+    scene.add(enemyGroup);
+    enemies.push(enemyGroup);
+  }
+
+  // --- Reset Game ---
+  function resetGame() {
+    if (gameLoopId) cancelAnimationFrame(gameLoopId);
+    
+    // Clear enemies
+    enemies.forEach(e => scene.remove(e));
+    enemies.length = 0;
+    
+    // Reset stats
+    speed = 0.3;
+    score = 0;
+    carX = 0;
+    targetX = 0;
+    isGameOver = false;
+    enemySpawnTimer = 0;
+    carGroup.position.x = 0;
+    carGroup.rotation.z = 0;
+    gridHelper.position.z = 0;
+    
+    scoreEl.textContent = '0';
+    gameOverEl.style.display = 'none';
+    
+    // Restart loop
+    animate();
+  }
+
+  restartBtn.addEventListener('click', resetGame);
+
+  // --- Animation Loop ---
   function animate() {
-    gameAnimationId = requestAnimationFrame(animate);
+    if (isGameOver) return;
 
-    // Move car
-    if (keys.left) carX -= 0.15;
-    if (keys.right) carX += 0.15;
-    carX = Math.max(-4, Math.min(4, carX)); // Keep on road
-    car.position.x += (carX - car.position.x) * 0.2; // Smooth lerp
+    gameLoopId = requestAnimationFrame(animate);
 
+    // Increase difficulty over time
+    speed += 0.0001;
+    score += Math.floor(speed * 10);
+    scoreEl.textContent = score;
+
+    // Player movement
+    if (keys.left) targetX -= 0.2;
+    if (keys.right) targetX += 0.2;
+    targetX = Math.max(-7, Math.min(7, targetX)); // Keep within walls
+    
+    // Smooth lerp
+    carX += (targetX - carX) * 0.15;
+    carGroup.position.x = carX;
+    
     // Tilt car when steering
-    car.rotation.z = (carX - car.position.x) * -0.5;
+    carGroup.rotation.z = (targetX - carX) * -0.3;
+    carGroup.rotation.y = (targetX - carX) * 0.2;
 
-    // Scroll the grid to simulate movement
+    // Move Grid (simulating speed)
     gridHelper.position.z += speed;
-    if (gridHelper.position.z > 10) {
-      gridHelper.position.z = 0;
+    if (gridHelper.position.z > 1) { // Grid size is 20, spacing is 1
+      gridHelper.position.z -= 1;
     }
 
-    // Camera follow (slight sway)
-    camera.position.x = car.position.x * 0.5;
-    camera.lookAt(car.position.x * 0.8, 0, 0);
+    // Move Pillars
+    leftPillar.position.z += speed;
+    rightPillar.position.z += speed;
+    if (leftPillar.position.z > 10) {
+      leftPillar.position.z = -10;
+      rightPillar.position.z = -10;
+    }
+
+    // Enemy Logic
+    enemySpawnTimer += speed;
+    // Spawn a new enemy every ~60 frames (adjust for difficulty)
+    if (enemySpawnTimer > 45) {
+      spawnEnemy();
+      enemySpawnTimer = 0;
+    }
+
+    // Move and check enemies
+    for (let i = enemies.length - 1; i >= 0; i--) {
+      const enemy = enemies[i];
+      enemy.position.z += speed * 1.5; // Enemies move towards player
+
+      // Check collision (simple bounding box)
+      const dx = Math.abs(enemy.position.x - carGroup.position.x);
+      const dz = Math.abs(enemy.position.z - carGroup.position.z);
+      
+      if (dx < 1.2 && dz < 2.0) { // Collision threshold
+        isGameOver = true;
+        finalScoreEl.textContent = score;
+        
+        // Save best score
+        const currentBest = parseInt(localStorage.getItem('neon_dodge_best') || '0');
+        if (score > currentBest) {
+          localStorage.setItem('neon_dodge_best', score);
+          bestEl.textContent = score;
+        }
+        
+        gameOverEl.style.display = 'flex';
+        cancelAnimationFrame(gameLoopId);
+        break;
+      }
+
+      // Remove enemies that passed the player
+      if (enemy.position.z > 15) {
+        scene.remove(enemy);
+        enemies.splice(i, 1);
+      }
+    }
+
+    // Camera follow (subtle sway)
+    camera.position.x += (carGroup.position.x * 0.5 - camera.position.x) * 0.1;
+    camera.lookAt(carGroup.position.x * 0.3, 1, -10);
 
     renderer.render(scene, camera);
   }
@@ -843,5 +1024,6 @@ function startThreeJSGame(canvas, container) {
   });
   resizeObserver.observe(container);
 
+  // Start!
   animate();
 }
